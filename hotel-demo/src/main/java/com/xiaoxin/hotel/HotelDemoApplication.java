@@ -19,20 +19,4 @@ public class HotelDemoApplication {
         SpringApplication.run(HotelDemoApplication.class, args);
     }
 
-    @Bean
-    public ElasticsearchClient elasticsearchClient(){
-        // URL
-        String serverUrl = "http://192.168.192.129:9200";
-
-        //创建低级别客户端
-        RestClient restClient = RestClient.builder(HttpHost.create(serverUrl)).build();
-
-        //创建JSON映射 用于数据的序列化和反序列化
-        ElasticsearchTransport transport = new RestClientTransport(
-                restClient, new JacksonJsonpMapper());
-
-        //创建ES客户端
-        return  new ElasticsearchClient(transport);
-    }
-
 }
